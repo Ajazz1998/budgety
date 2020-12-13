@@ -2,6 +2,6 @@ const budgetContoller = (function() {
 
 })();
 
-const budgetContoller = (function() {
+const UIController = (function() {
 
 })();
