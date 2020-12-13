@@ -13,5 +13,10 @@ const controller = (function(budgetCtrl, UICtrl) {
     }
 
     document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
-    
+
+    document.addEventListener('keypress', function(e) {
+
+        ctrlAddItem();
+    })
+
 })(budgetContoller, UIController);
