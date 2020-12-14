@@ -27,13 +27,14 @@ const UIController = (function() {
 })();
 
 const controller = (function(budgetCtrl, UICtrl) {
-    
-    
+    var DOM = getDOMstrings.DOMstrings;
+
     var ctrlAddItem = function() {
-        console.log('It works');
+        let Inputs = getInput;
+        console.log(Inputs);
     }
 
-    document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
+    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
     document.addEventListener('keypress', function(e) {
         ctrlAddItem();
