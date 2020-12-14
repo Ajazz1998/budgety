@@ -27,6 +27,8 @@ const UIController = (function() {
 })();
 
 const controller = (function(budgetCtrl, UICtrl) {
+    
+    
     var ctrlAddItem = function() {
         console.log('It works');
     }
