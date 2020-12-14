@@ -11,7 +11,19 @@ const UIController = (function() {
         inputBtn: '.add__btn'
     };
 
-    return
+    return {
+        getInput: function() {
+            return {
+                type: document.querySelector(DOMstrings.inputType).value,
+                description: document.querySelector(DOMstrings.inputDes).value,
+                value: document.querySelector(DOMstrings.inputValue).value,
+            };
+        },
+
+        getDOMstrings: function() {
+            return DOMstrings;
+        }
+    }
 })();
 
 const controller = (function(budgetCtrl, UICtrl) {
