@@ -27,17 +27,19 @@ const UIController = (function() {
 })();
 
 const controller = (function(budgetCtrl, UICtrl) {
-    var DOM = getDOMstrings.DOMstrings;
+    var DOM = UICtrl.getDOMstrings();
 
     var ctrlAddItem = function() {
-        let Inputs = getInput;
+        let Inputs = UICtrl.getInput();
         console.log(Inputs);
     }
 
     document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
     document.addEventListener('keypress', function(e) {
-        ctrlAddItem();
+        if (event.keyCode === 13 || event.which === 13) {
+            ctrlAddItem();
+        }
     })
 
 })(budgetContoller, UIController);
