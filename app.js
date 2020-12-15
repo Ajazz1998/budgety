@@ -27,19 +27,31 @@ const UIController = (function() {
 })();
 
 const controller = (function(budgetCtrl, UICtrl) {
-    var DOM = UICtrl.getDOMstrings();
+
+    let setupEventListers = function() {
+        var DOM = UICtrl.getDOMstrings();
+
+        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+
+        document.addEventListener('keypress', function(e) {
+            if (e.keyCode === 13 || e.which === 13) {
+                ctrlAddItem();
+            }
+        });
+    };
 
     var ctrlAddItem = function() {
         let Inputs = UICtrl.getInput();
         console.log(Inputs);
-    }
+    };
 
-    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
-
-    document.addEventListener('keypress', function(e) {
-        if (e.keyCode === 13 || e.which === 13) {
-            ctrlAddItem();
+    return {
+        int: function() {
+            console.log('Application has started..');
+            setupEventListers();
         }
-    })
+    };
 
 })(budgetContoller, UIController);
+
+controller.int();
