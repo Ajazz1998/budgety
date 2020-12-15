@@ -12,7 +12,18 @@ const budgetContoller = (function() {
         this.description = description;
         this.value = value;
     }
-    
+
+    const data = {
+        totalItems: {
+            exp: [],
+            inc: []
+        },
+
+        totals: {
+            exp: [],
+            inc: []
+        }
+    }
 })();
 
 const UIController = (function() {
