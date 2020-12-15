@@ -23,6 +23,18 @@ const budgetContoller = (function() {
             exp: [],
             inc: []
         }
+    };
+
+    return {
+        addItem: function(type, des, val){
+            var newItems, ID;
+
+            ID = data.addItems[type][data.addItems[type].length - 1].id + 1;
+
+            if (type === 'exp') {
+                
+            }
+        }
     }
 })();
 
