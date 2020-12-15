@@ -14,7 +14,7 @@ const budgetContoller = (function() {
     }
 
     const data = {
-        totalItems: {
+        addItems: {
             exp: [],
             inc: []
         },
@@ -42,7 +42,7 @@ const budgetContoller = (function() {
                 newItems = new Income(ID, des, val);
             }
 
-            data.allItems[type].push(newItem);
+            data.addItems[type].push(newItems);
             return newItems;
         },
 
@@ -109,3 +109,5 @@ const controller = (function(budgetCtrl, UICtrl) {
 })(budgetContoller, UIController);
 
 controller.int();
+
+budgetContoller.testings();
