@@ -32,13 +32,13 @@ const budgetContoller = (function() {
             if (data.addItems[type].length > 0) {
                 ID = data.addItems[type][data.addItems[type].length - 1].id + 1;
             } else {
-                ID = 0
+                ID = 0;
             }
             
 
             if (type === 'exp') {
                 newItems = new Expens(ID, des, val);
-            }else if (type === 'exp') {
+            }else if (type === 'inc') {
                 newItems = new Income(ID, des, val);
             }
 
@@ -93,6 +93,8 @@ const controller = (function(budgetCtrl, UICtrl) {
         let Inputs, newItem;
 
         Inputs = UICtrl.getInput();
+
+        newItem =  budgetCtrl.addItems(Inputs.type, Inputs.description, Inputs.value);
 
     
     };
