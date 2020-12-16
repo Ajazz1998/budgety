@@ -83,9 +83,11 @@ const UIController = (function() {
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
             newHtml = newHtml.replace('%value%', obj.value);
+    
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml)
         },
+        
 
-        document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
         getDOMstrings: function() {
             return DOMstrings;
