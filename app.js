@@ -116,4 +116,3 @@ const controller = (function(budgetCtrl, UICtrl) {
 
 controller.int();
 
-budgetContoller.testings();
