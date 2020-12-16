@@ -22,7 +22,9 @@ const budgetContoller = (function() {
         totals: {
             exp: [],
             inc: []
-        }
+        },
+
+        budget = 0
     };
 
     return {
@@ -45,6 +47,28 @@ const budgetContoller = (function() {
             data.addItems[type].push(newItems);
             return newItems;
         },
+
+        calculateBudget: function() {
+            calculateTotal('exp');
+            calculateTotal('inc');
+
+            data.budget = data.totals.inc - data.totals.exp;
+
+            if (data.totals.inc > 0) {
+                data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100)
+            } else {
+                data.percentage = -1;
+            }
+        },
+
+        getBudget: function() {
+            return {
+                budget: data.budget,
+                totalInc: data.totals.inc,
+                totalExp: data.totals.exp,
+                percentage: data.percentage,
+            }
+        }
     }
 })();
 
@@ -122,7 +146,11 @@ const controller = (function(budgetCtrl, UICtrl) {
     };
 
     let updateBudget = function() {
+        budgetCtrl.calculateBudget();
 
+        const budget = budgetCtrl.getBudget();
+
+        console.log(budget);
     };
 
     var ctrlAddItem = function() {
@@ -130,13 +158,15 @@ const controller = (function(budgetCtrl, UICtrl) {
 
         Inputs = UICtrl.getInput();
 
-        newItem =  budgetCtrl.addItems(Inputs.type, Inputs.description, Inputs.value);
+        if (Inputs.description !== "" && !isNaN(Inputs.value) && Inputs.value > 0) {
+            newItem =  budgetCtrl.addItems(Inputs.type, Inputs.description, Inputs.value);
 
-        UICtrl.addListItem(newItem, Inputs.type);
-
-        UICtrl.clearFields();
-
-        updateBudget();
+            UICtrl.addListItem(newItem, Inputs.type);
+    
+            UICtrl.clearFields();
+    
+            updateBudget();
+        }
     
     };
 
