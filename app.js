@@ -45,10 +45,6 @@ const budgetContoller = (function() {
             data.addItems[type].push(newItems);
             return newItems;
         },
-
-        testings: function() {
-            console.log(data);
-        }
     }
 })();
 
@@ -67,7 +63,7 @@ const UIController = (function() {
             return {
                 type: document.querySelector(DOMstrings.inputType).value,
                 description: document.querySelector(DOMstrings.inputDes).value,
-                value: document.querySelector(DOMstrings.inputValue).value,
+                value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
             };
         },
 
@@ -91,7 +87,19 @@ const UIController = (function() {
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
         },
         
+        clearFields: function() {
+            let fields, fieldArr;
 
+            fields = document.querySelectorAll(DOMstrings.inputDes + ', ' + DOMstrings.inputValue);
+
+            fieldArr = Array.prototype.slice.call(fields);
+
+            fieldArr.forEach((current, index, array) => {
+                current.value = "";
+            });
+
+            fieldArr[0].focus();
+        },
 
         getDOMstrings: function() {
             return DOMstrings;
@@ -113,6 +121,10 @@ const controller = (function(budgetCtrl, UICtrl) {
         });
     };
 
+    let updateBudget = function() {
+
+    };
+
     var ctrlAddItem = function() {
         let Inputs, newItem;
 
@@ -120,8 +132,11 @@ const controller = (function(budgetCtrl, UICtrl) {
 
         newItem =  budgetCtrl.addItems(Inputs.type, Inputs.description, Inputs.value);
 
-        UICtrl.addListItem(newItem, Inputs.type)
+        UICtrl.addListItem(newItem, Inputs.type);
 
+        UICtrl.clearFields();
+
+        updateBudget();
     
     };
 
