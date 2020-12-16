@@ -58,8 +58,8 @@ const UIController = (function() {
         inputDes: '.add__description',
         inputValue: '.add__value',
         inputBtn: '.add__btn',
-        incomeContainer: 'income__list',
-        expensContainer: 'expenses__list'
+        incomeContainer: '.income__list',
+        expensContainer: '.expenses__list'
     };
 
     return {
@@ -74,18 +74,21 @@ const UIController = (function() {
         addListItem: function(obj, type){
             var html, newHtml, element;
 
-            if(type === 'exp') {
-                
+            if (type === 'inc') {
+                element = DOMstrings.incomeContainer;
                 html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
-            }else if (type === 'inc') {
+    
+            } else if(type === 'exp') {
+                element = DOMstrings.expensContainer;
                 html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
-            }
+
+            } 
 
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
             newHtml = newHtml.replace('%value%', obj.value);
     
-            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml)
+            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
         },
         
 
