@@ -11,7 +11,15 @@ const budgetContoller = (function() {
         this.id = id;
         this.description = description;
         this.value = value;
-    }
+    };
+
+    const calculateTotal = function(type) {
+        let sum = 0;
+        data.allItems[type].forEach((cur) => {
+            sum += cur.value;
+        });
+        data.totals[type = sum];
+    };
 
     const data = {
         addItems: {
@@ -24,7 +32,8 @@ const budgetContoller = (function() {
             inc: []
         },
 
-        budget = 0
+        budget : 0,
+        percentage: -1
     };
 
     return {
@@ -79,7 +88,11 @@ const UIController = (function() {
         inputValue: '.add__value',
         inputBtn: '.add__btn',
         incomeContainer: '.income__list',
-        expensContainer: '.expenses__list'
+        expensContainer: '.expenses__list',
+        budgetLabel: '.budget__value',
+        incomeLabel: '.budget__income--value',
+        expensesLabel: '.budget__expenses--value',
+        percentageLabel: '.budget__expenses--percentage',
     };
 
     return {
