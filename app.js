@@ -186,6 +186,12 @@ const controller = (function(budgetCtrl, UICtrl) {
     return {
         int: function() {
             console.log('Application has started..');
+            UICtrl.displayBudget({
+                budget: data.budget,
+                totalInc: data.totals.inc,
+                totalExp: data.totals.exp,
+                percentage: data.percentage,
+            });
             setupEventListers();
         }
     };
